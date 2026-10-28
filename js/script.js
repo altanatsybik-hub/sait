@@ -74,5 +74,5 @@ if (speakBtn) {
         utterance.rate = 1;
 
         window.speechSynthesis.speak(utterance);
-    });
+    );
 }
