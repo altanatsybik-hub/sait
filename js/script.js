@@ -49,3 +49,32 @@ window.addEventListener('scroll', () => {
 upBtn.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 });
+}
+// ==========================================
+// 5. КНОПКА ОЗВУЧИВАНИЯ ТЕКСТА
+// ==========================================
+const speakBtn = document.getElementById('speak-btn');
+
+if (speakBtn) {
+    speakBtn.addEventListener('click', () => {
+        // Если уже говорит - останавливаем
+        if (window.speechSynthesis.speaking) {
+            window.speechSynthesis.cancel();
+            return;
+        }
+
+        // Собираем текст из блока main
+        const mainContent = document.querySelector('main');
+        if (!mainContent) return;
+
+        const textToSpeak = mainContent.innerText;
+        const utterance = new SpeechSynthesisUtterance(textToSpeak);
+        
+        // Настройки языка
+        utterance.lang = 'ru-RU';
+        utterance.rate = 1;
+
+        // Запускаем
+        window.speechSynthesis.speak(utterance);
+    });
+}
