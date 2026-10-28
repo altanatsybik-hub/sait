@@ -289,11 +289,3 @@ footer {
     #about { flex-direction: column; text-align: center; }
     section { margin: 40px 0; }
 }
-body {
-    /* Ваши старые стили... */
-    padding-left: 10%;  /* Отступ слева */
-    padding-right: 10%; /* Отступ справа */
-    /* Или можно использовать max-width */
-    /* max-width: 1200px; */
-    /* margin: 0 auto; */
-}
