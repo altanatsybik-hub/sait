@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Портфолио начинающего программиста">
+    <title>Цыбикова Алтана Доржиевна — Начинающий программист</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- ШАПКА -->
+    <header>
+        <button id="theme-toggle" title="Сменить тему">🌙</button>
+        <nav>
+            <a href="#about">Обо мне</a>
+            <a href="#skills">Навыки</a>
+            <a href="#projects">Проекты</a>
+            <a href="#contacts">Контакты</a>
+        </nav>
+        <h1>Алтана Доржиевна</h1>
+        <p>Начинающий программист</p>
+    </header>
+
+    <main>
+      
+
+    <div class="about-content">
+        <!-- Ваше фото -->
+        <img src="фото.jpg" alt="Фото Цыбиковой Алтаны" class="profile-photo">
+            <div>
+                <h2>Обо мне</h2>
+                <p>Привет! Меня зовут Алтана, и я учусь в сфере IT. Сейчас я изучаю <strong>основы программирования</strong> и осваиваю языки <em>C++, Java и Python</em>. </p>
+    <p>Представленные здесь проекты — это мои практические работы, выполненные в рамках обучения в Бурятском Государственном Университете, еще мои навыки вне моей учебы. Я постоянно развиваюсь, решаю алгоритмические задачи и стремлюсь к созданию качественного кода.</p>
+            </div>
+        </section>
+
+        <!-- НАВЫКИ -->
+        <section id="skills">
+            <h2>Навыки</h2>
+            <ul>
+                <li><strong>Языки программирования:</strong> Базовые уровни С++, Python, Java</li>
+                <li><strong>Среда разработки:</strong> VS Code</li>
+                <li><strong>Базовые знания:</strong> Основы алгоритмизации, работы с переменными и циклами</li>
+                <li><strong>Личные качества:</strong> Усидчивость, внимательность, желание учиться новому и быстрое обучение, к новым знаниям</li>
+            </ul>
+        </section>
+
+        <!-- ПРОЕКТЫ -->
+        <section id="projects">
+            <h2>Мои проекты</h2>
+            <article>
+                <h3> Работа в пиццерии   ТГ АБСОЛЮТ</h3>
+                <p>На протяжнии работы в пиццерии, познавала и работала непосредственно с 1С </p>
+            </article>
+            <article>
+                <h3>Практика в ЦИТ (Центр Информационных Технологий)</h3>
+                <p>На практике, мы настравали на компьютере программу Pycharm, а также библиотеки Python: django, pillow, mysqlclient </p>
+            </article>
+           
+
+        <!-- КОНТАКТЫ -->
+        <section id="contacts">
+            <h2>Связаться со мной</h2>
+            <form action="#" method="POST">
+                <label for="name">Имя</label>
+                <input type="text" id="name" name="name" placeholder="Как вас зовут?" required>
+
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" placeholder="you@mail.ru" required>
+
+                <label for="msg">Сообщение</label>
+                <textarea id="msg" name="message" rows="4" placeholder="Ваше сообщение..." required></textarea>
+
+                <button type="submit">Отправить</button>
+            </form>
+            <p id="form-status" role="status"></p>
+        </section>
+    </main>
+
+    <!-- ПОДВАЛ -->
+    <footer>
+        <p>© <span id="year">2026</span> Цыбикова Алтана. Проект на HTML + CSS + JS.</p>
+    </footer>
+
+    <!-- КНОПКА «НАВЕРХ» -->
+    <button id="to-top" title="Наверх">↑</button>
+
+    <!-- JAVASCRIPT (defer = выполнится после загрузки HTML) -->
+    <script src="js/script.js" defer></script>
+</body>
+</html>
