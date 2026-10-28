@@ -37,9 +37,7 @@ form.addEventListener('submit', (event) => {
 });
 
 
-// ==========================================
-// 4. КНОПКА «НАВЕРХ» ПОЯВЛЯЕТСЯ ПРИ ПРОКРУТКЕ
-// ==========================================
+// 1. КНОПКА «НАВЕРХ»
 const upBtn = document.querySelector('#to-top');
 
 if (upBtn) {
@@ -49,12 +47,10 @@ if (upBtn) {
 
     upBtn.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
-    );
+    });
 }
 
-// ==========================================
-// 5. КНОПКА ОЗВУЧИВАНИЯ ТЕКСТА
-// ==========================================
+// 2. КНОПКА ОЗВУЧИВАНИЯ
 const speakBtn = document.getElementById('speak-btn');
 
 if (speakBtn) {
