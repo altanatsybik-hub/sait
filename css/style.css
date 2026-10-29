@@ -220,7 +220,7 @@ textarea:invalid:not(:placeholder-shown) {
 
 button {
     background: var(--color-main);
-    color: #fff;
+    color: #dd8b8b;
     border: none;
     padding: 12px 24px;
     border-radius: 8px;
