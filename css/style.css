@@ -246,7 +246,7 @@ button:hover { background: var(--color-main-dark); }
 #form-status.visible {
     opacity: 1;
     padding: 12px;
-    background: #f0fff4;
+    background: #973106cc;
 }
 
 /* ============ 6. ПОДВАЛ ============ */
