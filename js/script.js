@@ -72,3 +72,22 @@ if (speakBtn) {
         window.speechSynthesis.speak(utterance);
     });
 }
+const btnPlus = document.getElementById('btn-plus');
+const btnMinus = document.getElementById('btn-minus');
+const projectsSection = document.getElementById('projects');
+
+let currentSize = 16; // Начальный размер (в пикселях)
+
+// Увеличиваем
+btnPlus.addEventListener('click', () => {
+    currentSize += 2; // Прибавляем 2px
+    projectsSection.style.fontSize = currentSize + 'px';
+});
+
+// Уменьшаем
+btnMinus.addEventListener('click', () => {
+    if (currentSize > 10) { // Защита, чтобы текст не исчез
+        currentSize -= 2; // Отнимаем 2px
+        projectsSection.style.fontSize = currentSize + 'px';
+    }
+});
