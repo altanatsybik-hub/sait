@@ -289,11 +289,7 @@ footer {
     nav { gap: 14px; font-size: 0.9rem; }
     #about { flex-direction: column; text-align: center; }
     section { margin: 40px 0; }
-}
-body {
-    padding-left: 10%;
-    padding-right: 10%;
-}  
+} 
 body {
     transition: font-size 0.2s ease;
 }
