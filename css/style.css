@@ -131,7 +131,7 @@ section h2 {
 }
 
 #skills li {
-    background-color: #f8f9fa; /* Светло-серый фон карточки */
+    background-color: var(--color-card); 
     padding: 15px 20px;
     border-radius: 8px; /* Закругленные углы */
     border-left: 4px solid #e17b7b; /* Цветная полоска слева (под цвет вашей шапки) */
@@ -251,7 +251,7 @@ button:hover { background: var(--color-main-dark); }
 
 /* ============ 6. ПОДВАЛ ============ */
 footer {
-    background: var(--color-dark);
+	background: var(--color-card);
     color: #a0aec0;
     text-align: center;
     padding: 24px;
@@ -312,56 +312,55 @@ body {
 #btn-plus:hover, #btn-minus:hover {
     background-color: var(--color-main);
     color: #fff;
-}/* ============ 9. КНОПКИ В ШАПКЕ (ТЕМА, ОЗВУЧКА, ШРИФТ) ============ */
+/* ============ 9. КНОПКИ В ШАПКЕ ============ */
 
-/* Делаем плавный переход для шрифта */
 body {
     transition: font-size 0.2s ease;
 }
 
-/* Общий стиль для всех трех кнопок в шапке */
+/* Стили для кнопок */
 #theme-toggle, #speak-btn, #btn-plus, #btn-minus {
     position: absolute;
     top: 16px;
     background: rgba(255, 255, 255, 0.2);
-    color: #fff; /* Белый текст */
+    color: #fff;
     border: none;
-    border-radius: 8px; /* Чуть скругленные углы */
+    border-radius: 8px;
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
-    transition: background 0.2s;
+    padding: 8px 12px;
+    height: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 8px 12px;
-    height: 44px; /* Одинаковая высота для всех */
+    transition: background 0.2s;
 }
 
-/* Эффект при наведении */
 #theme-toggle:hover, #speak-btn:hover, #btn-plus:hover, #btn-minus:hover {
-    background: rgba(255, 255, 255, 0.35);
+    background: rgba(255, 255, 255, 0.4);
 }
 
-/* Позиционируем их по очереди справа налево */
+/* Позиционируем справа налево */
 #theme-toggle {
     right: 16px;
-    width: 44px; /* Квадратная кнопка */
-    border-radius: 50%; /* Круглая */
+    width: 44px;
+    border-radius: 50%;
     font-size: 20px;
     padding: 0;
 }
 
 #speak-btn {
-    right: 70px; /* Отступ от кнопки темы */
+    right: 70px;
 }
 
 #btn-plus {
-    right: 190px; /* Отступ от кнопки озвучки */
+    right: 180px; /* Пододвинули ближе */
 }
 
 #btn-minus {
-    right: 240px; /* Отступ от кнопки A+ */
+    right: 220px; /* Пододвинули ближе */
+}
 }
 
 /* Адаптация для телефонов (чтобы кнопки не наезжали друг на друга) */
