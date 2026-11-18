@@ -291,7 +291,7 @@ footer {
 #theme-toggle { right: 16px; width: 40px; border-radius: 50%; font-size: 20px; padding: 0; }
 #speak-btn { right: 70px; }
 #btn-plus { right: 260px; } /* Сдвинули влево */
-#btn-minus { right: 209px; } /* Сдвинули влево */
+#btn-minus { right: 220px; } /* Сдвинули влево */
 /* ============ 10. ОПУСКАЕМ ФОРМУ ВНИЗ ============ */
 #contacts {
     display: block !important;
