@@ -1,55 +1,57 @@
-// ====================================================
 // 1. АКТУАЛЬНЫЙ ГОД В ПОДВАЛЕ
-// ====================================================
 const yearEl = document.querySelector('#year');
-yearEl.textContent = new Date().getFullYear();
+if (yearEl) {
+    yearEl.textContent = new Date().getFullYear();
+}
 
-
-// ====================================================
 // 2. ПЕРЕКЛЮЧЕНИЕ ТЁМНОЙ ТЕМЫ
-//    JS переключает класс на <html>, а стили описаны в CSS
-// ====================================================
 const themeBtn = document.querySelector('#theme-toggle');
+if (themeBtn) {
+    themeBtn.addEventListener('click', () => {
+        document.documentElement.classList.toggle('dark');
+        const isDark = document.documentElement.classList.contains('dark');
+        themeBtn.textContent = isDark ? '☀️' : '🌙';
+    });
+}
 
-themeBtn.addEventListener('click', () => {
-    document.documentElement.classList.toggle('dark');
-
-    const isDark = document.documentElement.classList.contains('dark');
-    themeBtn.textContent = isDark ? '☀️' : '🌙';
-});
-
-
-// ====================================================
-// 3. ОТПРАВКА ФОРМЫ БЕЗ ПЕРЕЗАГРУЗКИ СТРАНИЦЫ
-// ====================================================
+// 3. ОТПРАВКА ФОРМЫ (ЧЕРЕЗ FORMSPREE)
 const form = document.querySelector('form');
 const statusMsg = document.querySelector('#form-status');
 
-form.addEventListener('submit', async (event) => {
-    event.preventDefault(); // Останавливаем перезагрузку страницы
+if (form) {
+    form.addEventListener('submit', async (event) => {
+        event.preventDefault();
 
-    const formData = new FormData(form); // Собираем все данные из полей
-    const name = formData.get('name');
+        const formData = new FormData(form);
+        const name = formData.get('name') || 'друг';
 
-    // ВОТ ГЛАВНОЕ ДЕЙСТВИЕ: Отправляем данные на сервер (Formspree)
-    const response = await fetch(form.action, {
-        method: 'POST',
-        body: formData,
-        headers: { 'Accept': 'application/json' }
+        try {
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            });
+
+            if (response.ok) {
+                statusMsg.textContent = `Спасибо, ${name}! Сообщение отправлено.`;
+                statusMsg.classList.add('visible');
+                statusMsg.style.color = "green";
+                form.reset();
+            } else {
+                statusMsg.textContent = `Ошибка отправки. Проверьте настройки Formspree.`;
+                statusMsg.classList.add('visible');
+                statusMsg.style.color = "red";
+            }
+        } catch (error) {
+            statusMsg.textContent = `Ошибка соединения. Попробуйте позже.`;
+            statusMsg.classList.add('visible');
+            statusMsg.style.color = "red";
+        }
     });
+}
 
-    // Если сервер говорит "ОК", показываем сообщение
-    if (response.ok) {
-        statusMsg.textContent = `Спасибо, ${name}! Сообщение отправлено.`;
-        statusMsg.classList.add('visible');
-        form.reset();
-    }
-});
-
-
-// 1. КНОПКА «НАВЕРХ»
+// 4. КНОПКА «НАВЕРХ»
 const upBtn = document.querySelector('#to-top');
-
 if (upBtn) {
     window.addEventListener('scroll', () => {
         upBtn.classList.toggle('visible', window.scrollY > 400);
@@ -58,53 +60,42 @@ if (upBtn) {
     upBtn.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
-	// ====================================================
-// 5. ИЗМЕНЕНИЕ РАЗМЕРА ШРИФТА (КНОПКИ A+ и A-)
-// ====================================================
+}
+
+// 5. КНОПКИ РАЗМЕРА ШРИФТА (A+ и A-)
 const btnPlus = document.querySelector('#btn-plus');
 const btnMinus = document.querySelector('#btn-minus');
 
-// Проверяем, есть ли кнопки на странице (чтобы не было ошибки)
 if (btnPlus && btnMinus) {
-    // Получаем текущий базовый размер шрифта body (у вас это 16px из CSS)
-    let currentFontSize = parseInt(window.getComputedStyle(document.body).fontSize);
+    let currentFontSize = 16;
 
-    function changeFontSize(delta) {
-        currentFontSize += delta;
-        
-        // Ограничиваем размер (чтобы не сломать верстку)
-        if (currentFontSize < 10) currentFontSize = 10;
+    btnPlus.addEventListener('click', () => {
+        currentFontSize += 2;
         if (currentFontSize > 30) currentFontSize = 30;
-        
-        // Меняем размер шрифта для всего body (и всего текста внутри)
-        document.body.style.fontSize = currentFontSize + "px";
-    }
+        document.body.style.fontSize = currentFontSize + 'px';
+    });
 
-    // Вешаем обработчики кликов на кнопки
-    btnPlus.addEventListener("click", () => changeFontSize(2));  // Увеличить на 2px
-    btnMinus.addEventListener("click", () => changeFontSize(-2)); // Уменьшить на 2px
-}
+    btnMinus.addEventListener('click', () => {
+        currentFontSize -= 2;
+        if (currentFontSize < 10) currentFontSize = 10;
+        document.body.style.fontSize = currentFontSize + 'px';
+    });
 }
 
-// 2. КНОПКА ОЗВУЧИВАНИЯ
+// 6. КНОПКА ОЗВУЧИВАНИЯ
 const speakBtn = document.getElementById('speak-btn');
-
 if (speakBtn) {
     speakBtn.addEventListener('click', () => {
         if (window.speechSynthesis.speaking) {
             window.speechSynthesis.cancel();
             return;
         }
-
         const mainContent = document.querySelector('main');
         if (!mainContent) return;
 
-        const textToSpeak = mainContent.innerText;
-        const utterance = new SpeechSynthesisUtterance(textToSpeak);
-        
+        const utterance = new SpeechSynthesisUtterance(mainContent.innerText);
         utterance.lang = 'ru-RU';
         utterance.rate = 1;
-
         window.speechSynthesis.speak(utterance);
     });
 }
