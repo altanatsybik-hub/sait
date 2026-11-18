@@ -22,6 +22,7 @@ if (form) {
         event.preventDefault();
 
         const formData = new FormData(form);
+		console.log("Скрипт загружен! Форма найдена:", form);
         const name = formData.get('name') || 'друг';
 
         try {
