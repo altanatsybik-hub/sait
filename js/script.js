@@ -17,7 +17,6 @@ if (themeBtn) {
 // 3. ОТПРАВКА ФОРМЫ (ЧЕРЕЗ FORMSPREE)
 const form = document.querySelector('form');
 const statusMsg = document.querySelector('#form-status');
-
 if (form) {
     form.addEventListener('submit', async (event) => {
         event.preventDefault();
