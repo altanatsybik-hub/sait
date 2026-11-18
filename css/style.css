@@ -294,8 +294,8 @@ footer {
 
 #theme-toggle { right: 16px; width: 40px; border-radius: 50%; font-size: 20px; padding: 0; }
 #speak-btn { right: 70px; }
-#btn-plus { right: 180px; }
-#btn-minus { right: 230px; }
+#btn-plus { right: 200px; }
+#btn-minus { right: 250px; }
 
 /* ============ 10. ОПУСКАЕМ ФОРМУ ВНИЗ ============ */
 #contacts {
