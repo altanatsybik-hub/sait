@@ -25,15 +25,25 @@ themeBtn.addEventListener('click', () => {
 const form = document.querySelector('form');
 const statusMsg = document.querySelector('#form-status');
 
-form.addEventListener('submit', (event) => {
-    event.preventDefault();        // отменяем перезагрузку
+form.addEventListener('submit', async (event) => {
+    event.preventDefault(); // Останавливаем перезагрузку страницы
 
-    const name = document.querySelector('#name').value.trim();
+    const formData = new FormData(form); // Собираем все данные из полей
+    const name = formData.get('name');
 
-    statusMsg.textContent = `Спасибо, ${name}! Сообщение отправлено.`;
-    statusMsg.classList.add('visible');
+    // ВОТ ГЛАВНОЕ ДЕЙСТВИЕ: Отправляем данные на сервер (Formspree)
+    const response = await fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+    });
 
-    form.reset();                  // очищаем поля
+    // Если сервер говорит "ОК", показываем сообщение
+    if (response.ok) {
+        statusMsg.textContent = `Спасибо, ${name}! Сообщение отправлено.`;
+        statusMsg.classList.add('visible');
+        form.reset();
+    }
 });
 
 
