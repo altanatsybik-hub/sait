@@ -312,4 +312,63 @@ body {
 #btn-plus:hover, #btn-minus:hover {
     background-color: var(--color-main);
     color: #fff;
+}/* ============ 9. КНОПКИ В ШАПКЕ (ТЕМА, ОЗВУЧКА, ШРИФТ) ============ */
+
+/* Делаем плавный переход для шрифта */
+body {
+    transition: font-size 0.2s ease;
+}
+
+/* Общий стиль для всех трех кнопок в шапке */
+#theme-toggle, #speak-btn, #btn-plus, #btn-minus {
+    position: absolute;
+    top: 16px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff; /* Белый текст */
+    border: none;
+    border-radius: 8px; /* Чуть скругленные углы */
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 12px;
+    height: 44px; /* Одинаковая высота для всех */
+}
+
+/* Эффект при наведении */
+#theme-toggle:hover, #speak-btn:hover, #btn-plus:hover, #btn-minus:hover {
+    background: rgba(255, 255, 255, 0.35);
+}
+
+/* Позиционируем их по очереди справа налево */
+#theme-toggle {
+    right: 16px;
+    width: 44px; /* Квадратная кнопка */
+    border-radius: 50%; /* Круглая */
+    font-size: 20px;
+    padding: 0;
+}
+
+#speak-btn {
+    right: 70px; /* Отступ от кнопки темы */
+}
+
+#btn-plus {
+    right: 190px; /* Отступ от кнопки озвучки */
+}
+
+#btn-minus {
+    right: 240px; /* Отступ от кнопки A+ */
+}
+
+/* Адаптация для телефонов (чтобы кнопки не наезжали друг на друга) */
+@media (max-width: 600px) {
+    #theme-toggle { top: 10px; right: 10px; }
+    #speak-btn { top: 10px; right: 60px; padding: 8px; font-size: 0; } /* Скрываем текст */
+    #speak-btn::before { content: "🔊"; font-size: 20px; } /* Оставляем только иконку */
+    #btn-plus { top: 10px; right: 110px; padding: 8px 10px; }
+    #btn-minus { top: 10px; right: 160px; padding: 8px 10px; }
 }
