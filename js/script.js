@@ -48,6 +48,32 @@ if (upBtn) {
     upBtn.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
+	// ====================================================
+// 5. ИЗМЕНЕНИЕ РАЗМЕРА ШРИФТА (КНОПКИ A+ и A-)
+// ====================================================
+const btnPlus = document.querySelector('#btn-plus');
+const btnMinus = document.querySelector('#btn-minus');
+
+// Проверяем, есть ли кнопки на странице (чтобы не было ошибки)
+if (btnPlus && btnMinus) {
+    // Получаем текущий базовый размер шрифта body (у вас это 16px из CSS)
+    let currentFontSize = parseInt(window.getComputedStyle(document.body).fontSize);
+
+    function changeFontSize(delta) {
+        currentFontSize += delta;
+        
+        // Ограничиваем размер (чтобы не сломать верстку)
+        if (currentFontSize < 10) currentFontSize = 10;
+        if (currentFontSize > 30) currentFontSize = 30;
+        
+        // Меняем размер шрифта для всего body (и всего текста внутри)
+        document.body.style.fontSize = currentFontSize + "px";
+    }
+
+    // Вешаем обработчики кликов на кнопки
+    btnPlus.addEventListener("click", () => changeFontSize(2));  // Увеличить на 2px
+    btnMinus.addEventListener("click", () => changeFontSize(-2)); // Уменьшить на 2px
+}
 }
 
 // 2. КНОПКА ОЗВУЧИВАНИЯ
@@ -80,14 +106,14 @@ let currentSize = 16; // Начальный размер (в пикселях)
 
 // Увеличиваем
 btnPlus.addEventListener('click', () => {
-    currentSize += 2; // Прибавляем 2px
+    currentSize += 2;
     projectsSection.style.fontSize = currentSize + 'px';
 });
 
 // Уменьшаем
 btnMinus.addEventListener('click', () => {
-    if (currentSize > 10) { // Защита, чтобы текст не исчез
-        currentSize -= 2; // Отнимаем 2px
+    if (currentSize > 10) { 
+        currentSize -= 2; 
         projectsSection.style.fontSize = currentSize + 'px';
     }
 });

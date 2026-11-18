@@ -289,3 +289,27 @@ footer {
     #about { flex-direction: column; text-align: center; }
     section { margin: 40px 0; }
 }
+body {
+    padding-left: 10%;
+    padding-right: 10%;
+}  
+body {
+    transition: font-size 0.2s ease;
+}
+
+#btn-plus, #btn-minus {
+    padding: 8px 16px;
+    margin: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    border: 1px solid var(--color-border);
+    background-color: var(--color-card);
+    color: var(--color-text);
+    border-radius: 8px;
+    transition: background 0.2s;
+}
+
+#btn-plus:hover, #btn-minus:hover {
+    background-color: var(--color-main);
+    color: #fff;
+}
