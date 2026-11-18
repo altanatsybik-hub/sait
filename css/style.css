@@ -313,6 +313,7 @@ body {
 #btn-plus:hover, #btn-minus:hover {
     background-color: var(--color-main);
     color: #fff;
+}
 /* ============ 9. КНОПКИ В ШАПКЕ ============ */
 body {
     transition: font-size 0.2s ease;
@@ -346,3 +347,12 @@ header {
 /* Кнопки шрифта ставим рядом с озвучкой */
 #btn-plus { position: absolute; top: 16px; right: 180px; font-weight: bold; }
 #btn-minus { position: absolute; top: 16px; right: 230px; font-weight: bold; }
+/* ==================================================== */
+/* ЖЕСТКОЕ ПРАВИЛО ДЛЯ ФОРМЫ (ЧТОБЫ ОНА БЫЛА СНИЗУ)     */
+/* ==================================================== */
+#contacts {
+    display: block !important;  /* Отключает сетку */
+    width: 100% !important;     /* Занимает всю ширину */
+    clear: both !important;     /* Запрещает быть сбоку */
+    margin-top: 80px !important;/* Отступ сверху */
+}
