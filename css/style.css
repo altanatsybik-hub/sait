@@ -290,8 +290,8 @@ footer {
 
 #theme-toggle { right: 16px; width: 40px; border-radius: 50%; font-size: 20px; padding: 0; }
 #speak-btn { right: 70px; }
-#btn-plus { right: 300px; } /* Сдвинули влево */
-#btn-minus { right: 300px; } /* Сдвинули влево */
+#btn-plus { right: 600px; } /* Сдвинули влево */
+#btn-minus { right: 600px; } /* Сдвинули влево */
 /* ============ 10. ОПУСКАЕМ ФОРМУ ВНИЗ ============ */
 #contacts {
     display: block !important;
