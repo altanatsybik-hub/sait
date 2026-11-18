@@ -313,15 +313,17 @@ body {
     background-color: var(--color-main);
     color: #fff;
 /* ============ 9. КНОПКИ В ШАПКЕ ============ */
-
 body {
     transition: font-size 0.2s ease;
 }
 
-/* Стили для кнопок */
+/* Делаем группу кнопок в правом верхнем углу */
+header {
+    position: relative;
+}
+
+/* Стили для всех кнопок */
 #theme-toggle, #speak-btn, #btn-plus, #btn-minus {
-    position: absolute;
-    top: 16px;
     background: rgba(255, 255, 255, 0.2);
     color: #fff;
     border: none;
@@ -331,43 +333,15 @@ body {
     cursor: pointer;
     padding: 8px 12px;
     height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     transition: background 0.2s;
 }
 
 #theme-toggle:hover, #speak-btn:hover, #btn-plus:hover, #btn-minus:hover {
     background: rgba(255, 255, 255, 0.4);
 }
-
-/* Позиционируем справа налево */
-#theme-toggle {
-    right: 16px;
-    width: 44px;
-    border-radius: 50%;
-    font-size: 20px;
-    padding: 0;
-}
-
-#speak-btn {
-    right: 70px;
-}
-
-#btn-plus {
-    right: 180px; /* Пододвинули ближе */
-}
-
-#btn-minus {
-    right: 220px; /* Пододвинули ближе */
-}
-}
-
-/* Адаптация для телефонов (чтобы кнопки не наезжали друг на друга) */
-@media (max-width: 600px) {
-    #theme-toggle { top: 10px; right: 10px; }
-    #speak-btn { top: 10px; right: 60px; padding: 8px; font-size: 0; } /* Скрываем текст */
-    #speak-btn::before { content: "🔊"; font-size: 20px; } /* Оставляем только иконку */
-    #btn-plus { top: 10px; right: 110px; padding: 8px 10px; }
-    #btn-minus { top: 10px; right: 160px; padding: 8px 10px; }
-}
+/* Позиционируем кнопки в ряд справа */
+#theme-toggle { position: absolute; top: 16px; right: 16px; width: 44px; border-radius: 50%; font-size: 20px; padding: 0; }
+#speak-btn { position: absolute; top: 16px; right: 70px; }
+/* Кнопки шрифта ставим рядом с озвучкой */
+#btn-plus { position: absolute; top: 16px; right: 180px; font-weight: bold; }
+#btn-minus { position: absolute; top: 16px; right: 230px; font-weight: bold; }
