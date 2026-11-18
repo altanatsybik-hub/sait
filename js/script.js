@@ -108,22 +108,3 @@ if (speakBtn) {
         window.speechSynthesis.speak(utterance);
     });
 }
-const btnPlus = document.getElementById('btn-plus');
-const btnMinus = document.getElementById('btn-minus');
-const projectsSection = document.getElementById('projects');
-
-let currentSize = 16; // Начальный размер (в пикселях)
-
-// Увеличиваем
-btnPlus.addEventListener('click', () => {
-    currentSize += 2;
-    projectsSection.style.fontSize = currentSize + 'px';
-});
-
-// Уменьшаем
-btnMinus.addEventListener('click', () => {
-    if (currentSize > 10) { 
-        currentSize -= 2; 
-        projectsSection.style.fontSize = currentSize + 'px';
-    }
-});
