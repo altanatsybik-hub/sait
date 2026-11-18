@@ -288,15 +288,10 @@ footer {
     transition: background 0.2s;
 }
 
-#theme-toggle:hover, #speak-btn:hover, #btn-plus:hover, #btn-minus:hover {
-    background: rgba(255, 255, 255, 0.4);
-}
-
 #theme-toggle { right: 16px; width: 40px; border-radius: 50%; font-size: 20px; padding: 0; }
 #speak-btn { right: 70px; }
-#btn-plus { right: 200px; }
-#btn-minus { right: 250px; }
-
+#btn-plus { right: 210px; } /* Сдвинули влево */
+#btn-minus { right: 260px; } /* Сдвинули влево */
 /* ============ 10. ОПУСКАЕМ ФОРМУ ВНИЗ ============ */
 #contacts {
     display: block !important;
