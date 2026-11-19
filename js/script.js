@@ -17,13 +17,25 @@ if (themeBtn) {
 // 3. ОТПРАВКА ФОРМЫ (ЧЕРЕЗ FORMSPREE)
 const form = document.querySelector('form');
 const statusMsg = document.querySelector('#form-status');
+
 if (form) {
     form.addEventListener('submit', async (event) => {
         event.preventDefault();
 
         const formData = new FormData(form);
-		console.log("Скрипт загружен! Форма найдена:", form);
         const name = formData.get('name') || 'друг';
+        
+        // Делаем кнопку неактивной, чтобы не кликали дважды
+        const btn = form.querySelector('button[type="submit"]');
+        const originalText = btn.textContent;
+        btn.textContent = "Отправка...";
+        btn.disabled = true;
+
+        // Скрываем старое сообщение
+        if (statusMsg) {
+            statusMsg.style.display = "none";
+            statusMsg.classList.remove('visible');
+        }
 
         try {
             const response = await fetch(form.action, {
@@ -33,19 +45,34 @@ if (form) {
             });
 
             if (response.ok) {
-                statusMsg.textContent = `Спасибо, ${name}! Сообщение отправлено.`;
-                statusMsg.classList.add('visible');
-                statusMsg.style.color = "green";
+                if (statusMsg) {
+                    statusMsg.textContent = `Спасибо, ${name}! Сообщение отправлено.`;
+                    // Принудительно задаем стили, чтобы не зависеть от CSS
+                    statusMsg.style.color = "green";
+                    statusMsg.style.display = "block"; 
+                    statusMsg.style.marginTop = "10px";
+                    statusMsg.style.fontWeight = "bold";
+                }
                 form.reset();
             } else {
-                statusMsg.textContent = `Ошибка отправки. Проверьте настройки Formspree.`;
-                statusMsg.classList.add('visible');
-                statusMsg.style.color = "red";
+                if (statusMsg) {
+                    statusMsg.textContent = `Ошибка отправки. Проверьте настройки Formspree.`;
+                    statusMsg.style.color = "red";
+                    statusMsg.style.display = "block";
+                }
+                console.error("Formspree ответил ошибкой:", response.status);
             }
         } catch (error) {
-            statusMsg.textContent = `Ошибка соединения. Попробуйте позже.`;
-            statusMsg.classList.add('visible');
-            statusMsg.style.color = "red";
+            if (statusMsg) {
+                statusMsg.textContent = `Ошибка соединения. Попробуйте позже.`;
+                statusMsg.style.color = "red";
+                statusMsg.style.display = "block";
+            }
+            console.error("Ошибка сети:", error);
+        } finally {
+            // Возвращаем кнопку в нормальное состояние
+            btn.textContent = originalText;
+            btn.disabled = false;
         }
     });
 }
